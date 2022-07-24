@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
+    <script src="templates/slideTemplate.js"></script>
+    <script src="templates/popupTemplate.js"></script>
+    <script src="index.js"></script>
+    <title>Structure generator</title>
+</head>
+<body>
+    <div id="structureTab" class="tab">
+        <h1 class="main-title">Generate structure.json</h1>
+
+        <div id="structureTools">
+            <div id="additionBoxes">
+                <div id="chapterAdditionBox" class="addition-box">
+                    <p class="subtitle">New chapter</p>
+                    <input id="chapterNameInput" class="input" type="text" placeholder="Chapter variable name">
+                    <input id="chapterTitleInput" class="input" type="text" placeholder="Chapter title name">
+                    <label class="checkbox-label"><input type="checkbox" id="chapterVisibility" checked>Visible in storyboard</label>
+                    <button id="addChapter" class="add-button" disabled>➕ Add chapter</button>
+                </div>
+                <div id="slideAdditionBox" class="addition-box">
+                    <p class="subtitle">New slide</p>
+                    <input id="slideNameInput" class="input" type="text" placeholder="Slide variable name">
+                    <select name="chapters" id="chapterSelect"></select>
+                    <button id="addSlide" class="add-button" disabled> ➕Add slide</button>
+                </div>
+            </div>
+            <p id="previewTitle">Structure preview</p>
+            <div id="previewContainer">
+                <div id="previewTree">
+
+                </div>
+                <div id="previewTools">
+                    <input id="newNameInput" class="input" type="text" placeholder="New name">
+                    <button id="renameElement" class="preview-button" disabled>✏️ Rename</button>
+                    <button id="removeElement" class="preview-button" disabled>🗑️ Remove</button>
+                </div>
+            </div>
+            <button id="generateJSON">⬇️ Download JSON file</button>
+        </div>
+    </div>
+    <div id="toolsTab" class="tab">
+        <h1 class="main-title">Other tools</h1>
+        <div id="tabContainer">
+            <textarea name="sourceJSON" id="sourceJSON" placeholder="Paste a source structure.json source code text here."></textarea>
+            <div id="toolsContainer">
+                <div class="tool-subcontainer">
+                    <p class="subtitle">Format file for UP</p>
+                    <button id="formatJSON" class="tool-button" disabled>⬇️ Download JSON file</button>
+                </div>
+                <div class="tool-subcontainer">
+                    <p class="subtitle">Generate slides folder</p>
+                    <label class="checkbox-label"><input type="checkbox" id="customTemplates">Use custom templates</label>
+                    <textarea class="custom-template-source" name="customSlideTemplateSource" id="customSlideTemplateSource" placeholder="Code for slides."></textarea>
+                    <textarea class="custom-template-source" name="customPopupTemplateSource" id="customPopupTemplateSource" placeholder="Code for popups."></textarea>
+                    <p id="templatesNote">(templates from global-iva-template automatically applied)</p>
+                    <button id="downloadSlidesFolder" class="tool-button" disabled>⬇️ Download slides folder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="credits">Developed by Ramiro Yaben, for all my colleagues.</p>
+</body>
+</html>
